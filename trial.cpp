@@ -1,30 +1,47 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main()
-{int n,i,j,sum=0,sum2,ans=0,c=0;
-    cin>>n;
+{
+    string a,b,t;
+    int l1,l2;
+    while (getline(cin,a))
+    {
+        getline(cin,b);
+        l1=a.size();
 
-        int a[n];
-        for (int i=0;i<n;i++)
+        l2=b.size();
+//        l=min(l1,l2);
+//        l3=max(l1,l2);
+//        if (l1==l)
+//        {
+//            t=a;
+//            a=b;
+//            b=t;
+//        }
+        string tt;
+
+
+        for (int i=0; i<l1; i++)
         {
-            cin>>a[i];
-            sum+=a[i];
+            for (int j=0; j<l2; j++)
+            {
+                if (a[i]==b[j])
+                {
+                    tt+=a[i];
+                    //c++;
+                    a[i]= '(';
+                    b[j]= ')';
+
+                }
+            }
+
         }
 
-        sort(a,a+n);
-        sum2=(sum/2);
-
-
-        c = 0; ans=0;
-        for(int i=n-1;i>=0;i--)
-
-        {
-            ans+=a[i];
-            c++;
-
-          if(ans>sum2)break;
-
-        }
-        cout<<c<<endl;
-
+        sort(tt.begin(),tt.end());
+//        for (i=0;i<c;i++)
+//        {
+//            cout<<tt[i];
+//        }cout<<endl;
+        cout<<tt<<endl;
+    }
 }

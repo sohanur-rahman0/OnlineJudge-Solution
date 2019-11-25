@@ -7,6 +7,7 @@ void drawBoard()
 
     ///this function is drawing the playing board
 
+    system("cls");
     cout<<endl<<endl<<"        Tic Tac Toe"<<endl<<endl;
     cout<<" Player 1 = [X]  Player 2 = [O]"<<endl<<endl;
     cout<<" Input from 1-9 to put X or Y at a given position"<<endl<<endl;
@@ -21,6 +22,7 @@ void drawBoard()
     cout<<"       "<<arr[7]<<"  |  "<<arr[8]<<"  | "<<arr[9]<<endl;    ///showing input position to the player
     cout<<"          |     |     "<<endl;
     cout<<endl;
+
 }
 
 int checkifwin()
@@ -100,7 +102,8 @@ int main()
        else{
         cout<<" Not a valid Input"<<endl;
         cin.ignore();
-        cin.get();
+        //cin.get();
+        player-=1;
        }
 
 
@@ -112,7 +115,7 @@ int main()
 
             cout<<" Congratulation Player "<<player<<" has won the game"<<endl;
         }
-        else
+        else if(PlayingCondition==0)
             cout<<" Match draw"<<endl;
         ///increase the player value by 1 to help determine the player number
         player++;
