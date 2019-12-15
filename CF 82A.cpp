@@ -2,18 +2,25 @@
 using namespace std;
 int main()
 {
-    //string arr[6] = {"blank","Sheldon","Leonard","Penny","Rajesh","Howard"};
+    string arr[] = {"Sheldon","Leonard","Penny","Rajesh","Howard"};
     long long n;
     cin>>n;
     //cout<<n%5;
-    if(n%5==1)
+    if(n==1)
         cout<<"Sheldon";
-    else if(n%5==2)
+    else if(n==2)
         cout<<"Leonard";
-    else if(n%5==3)
+    else if(n==3)
         cout<<"Penny";
-    else if(n%5==4)
+    else if(n==4)
         cout<<"Rajesh";
-    else
+    else if(n==5)
         cout<<"Howard";
+        else{
+            while(n>=5){
+                n-=5;
+                n/=2;
+            }
+            cout<<arr[n]<<endl;
+        }
 }
