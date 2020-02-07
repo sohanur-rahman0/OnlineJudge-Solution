@@ -102,25 +102,98 @@ int Min(struct Node *p)
 }
 Node *LinearSearch(struct Node *p,int key)
 {
-    while(p!=0){
+    while(p!=0)
+    {
         if(key==p->data)
             return p;
         p = p->next;
     }
     return nullptr;
 }
+
+void PushFront(int data)
+{
+    struct Node *t = new Node;
+    t->data = data;
+    t->next = first;
+    first=t;
+}
+void Insert(struct Node *np,int pos,int data)
+{
+    if(pos<0 || pos>countNode(np))
+        return;
+    struct Node *t,*p;
+    if(pos==0)
+    {
+        t = new Node;
+        t->data = data;
+        t->next = first;
+        first=t;
+    }
+    else if(pos>0)
+    {
+        p = first;
+        for(int i=0; i<pos-1 && p; i++)
+        {
+            p = p->next;
+        }
+        if(p)
+        {
+            t = new Node;
+            t->data = data;
+            t->next = p->next;
+            p->next = t;
+        }
+
+    }
+}
+
+void SortedInsert(struct Node *p,int data)
+{
+    struct Node *q,*t;
+    q = nullptr;
+    t = new Node;
+    t->data = data;
+    if(first==nullptr)
+        first = t;
+    else
+    {
+        while(p && p->data<data)
+        {
+            q = p;
+            p = p->next;
+        }
+        if(p==first)
+        {
+            t->next = first;
+            first = t;
+
+        }
+        else
+        {
+            t->next = q->next;
+            q->next = t;
+        }
+    }
+}
 int main()
 {
-    int A[] = {2, 3, 6,25, 7, 5, 8, 10,};
+    int A[] = {2,3,6,25,27,35,38,40};
     creat(A,7);
     Display(first);
-    DisplayRecursive(first);
-    cout<<endl;
+    //DisplayRecursive(first);
+    //cout<<endl;
     cout<<countNode(first)<<endl;
     //cout<<countNodeRecursive(first)<<endl;
     cout<<"Sum: "<<Sum(first)<<endl;
     //cout<<"Sum: "<<SumRecursive(first)<<endl;
     cout<<"Max: "<<Max(first)<<endl;
     cout<<"Min: "<<Min(first)<<endl;
+    PushFront(1);
+    //PushBack(111);
+    //Insert(first,1,55);
+    SortedInsert(first,10);
+    Display(first);
+
 
 }
