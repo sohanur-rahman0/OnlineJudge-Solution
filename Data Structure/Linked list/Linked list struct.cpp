@@ -176,6 +176,18 @@ void SortedInsert(struct Node *p,int data)
         }
     }
 }
+void Delete(struct node *p,int value){
+    struct node *q;
+    while(p->next!=0){
+         if(p->next->data==value){
+            p->next = p->next->next;
+            delete p->next;
+            break;
+         }
+        p=p->next;
+    }
+
+}
 int main()
 {
     int A[] = {2,3,6,25,27,35,38,40};
