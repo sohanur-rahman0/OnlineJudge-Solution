@@ -6,16 +6,28 @@ int main()
     double l,c,r1,r2;
     while(cin>>l>>c>>r1>>r2,l,c,r1,r2)
     {
-        double areaElevator = l*c;
-        double r = r1 + r2;
-        double areaCircle = pi * r * r;
-        if(areaElevator<areaCircle)
+        if((l*c)>= ((4*r1*r1)+(4*r2*r2)))
         {
-            cout<<"N"<<endl;
-        }
+
+                if((r1+r2)*2<= l || (r1+r2)*2<=c)
+                {
+                    cout<<"Y"<<endl;
+                }
+                else
+                {
+                    cout<<"N"<<endl;
+                }
+            }
+
         else
         {
-            cout<<"S"<<endl;
+            if((r1+r2)*2<= l || (r1+r2)*2<=c)
+                {
+                    cout<<"Y"<<endl;
+                }
+                else{
+            cout<<"N"<<endl;
+                }
         }
     }
 }
