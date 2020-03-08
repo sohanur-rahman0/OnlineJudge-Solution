@@ -6,7 +6,7 @@ struct Node
     struct Node *next;
 }*first=nullptr,*second=nullptr,*third=nullptr;
 
-void creat(int A[], int n)
+void create(int A[], int n)
 {
     struct Node *t,*last;
     first = new Node;
@@ -23,7 +23,7 @@ void creat(int A[], int n)
 
     }
 }
-void creat2(int A[], int n)
+void create2(int A[], int n)
 {
     struct Node *t,*last;
     second = new Node;
@@ -40,7 +40,20 @@ void creat2(int A[], int n)
 
     }
 }
-
+void create3(struct Node *f)
+{
+    
+    cin>>f->data;
+    
+    if(f->data==0){
+        f->next = nullptr;
+    }
+    else{
+        struct Node *t = new Node;
+        f->next = t;
+        creat(t);
+    }
+}
 void Display(struct Node *p)
 {
     while(p!=NULL)
@@ -371,8 +384,8 @@ int main()
 {
     int A[] = {2,3,4,8,27,38,40};
     int B[] = {10,20,30,40};
-    creat2(B,4);
-    creat(A,7);
+    create2(B,4);
+    create(A,7);
     Display(first);
     //DisplayRecursive(first);
     //cout<<endl;
