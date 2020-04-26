@@ -1,35 +1,39 @@
-#include <bits/stdc++.h>
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+#define ll long long
+ll arr[1000000]= {0};
 using namespace std;
+void sieve()
+{
+    for(ll  i=2; i<= 1000000; i++)
+    {
+        for (ll j=i*i; j<= 1000000; j+=i)
+        {
+            arr[j-1]=1;
+
+        }
+    }
+}
+
 int main()
 {
-   int n, c, d, a[100], b[100];
-
-
-   scanf("%d", &n);
-   int arr[n];
-   for(int i=0; i<n; i++)
-    cin>>arr[i];
-
-
-   for (c = 0; c < n ; c++)
-      scanf("%d", &a[c]);
-
-
-
-   for (c = n - 1, d = 0; c >= 0; c--, d++)
-      b[d] = a[c];
-
-   for (c = 0; c < n; c++)
-      a[c] = b[c];
-
-
-      int count = 0;
-     cout<<endl;
-      for(int i=0; i<n; i++){
-        if(arr[i]!=a[i])
-            count++;
-      }
-      cout<<count<<endl;
-
-   return 0;
+    ll sum = 0;
+    sieve();
+    arr[1] = 1;
+    for(ll i=1; i<1000000; i++){
+        if(arr[i-1]==0){
+            cout<<i<<' ';
+            sum+= i;
+        }
+    }
+cout<<sum+1<<endl;
+    return 0;
 }
