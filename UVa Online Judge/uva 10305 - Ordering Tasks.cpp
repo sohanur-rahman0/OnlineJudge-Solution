@@ -1,52 +1,45 @@
-#include<bits/stdc++.h> ///Topological Sort  ///did not solve yet
+#include<bits/stdc++.h> ///Topological Sort ///did not solve yet
 using namespace std;
-vector<int>ans;
-vector<vector<int>>Graph;
-vector<int>Indegree;
 
+stack<int>st;
+void dfs(int v, vector<vector<int>>&graph,vector<bool>&visited)
+{
+    visited[v] = true;
+    vector<int>::iterator i;
+    for(i = graph[v].begin(); i!=graph[v].end(); i++)
+        if(!visited[*i])
+            dfs(*i,graph,visited);
+
+    st.push(v);
+}
 
 int main()
 {
-    int n,m;
-    while(cin>>n>>m,n,m){
-        ans.clear();
-        Graph.clear();
-        Indegree.clear();
-        Graph.resize(n+1);
-        Indegree.assign(n+1,0);
-        queue<int>q;
-        int l = m;
-        int u,v;
-        while(l--){
+    int n,m,u,v;
+    while(cin>>n>>m)
+    {
+        vector<vector<int>>graph(n+1);
+        vector<bool>visited(n+1,false);
+        for(int i=0; i<m; i++)
+        {
             cin>>u>>v;
-            Graph[u].push_back(v);
-            Indegree[v]++;
+            graph[u].push_back(v);
         }
-        for(int i=1; i<=n; i++){
-            if(Indegree[i]==0){
-                q.push(i);
-            }
+//        for(int i=0; i<graph.size(); i++){
+//            cout<<i<<"-->";
+//            for(int t:graph[i])cout<<t<<" ";
+//            cout<<endl;
+//        }
+        for(int i=1; i<=n; i++)
+        {
+            if(visited[i]==false)
+                dfs(i,graph,visited);
         }
-        while(!q.empty()){
-            u = q.front();
-            q.pop();
-            ans.push_back(u);
-            Indegree[u]--;
-            for(int i=0; i<Graph[u].size(); i++)
-            {
-                v = Graph[u][i];
-                Indegree[v]--;
-                if(Indegree[v]==0)q.push(v);
-            }
-        }
-
-        for(int i=0; i<n; i++){
-                if(i)cout<<' ';
-            cout<<ans[i];
-
+        while(!st.empty())
+        {
+            cout<<st.top()<<' ';
+            st.pop();
         }
         cout<<endl;
-
     }
-
 }
