@@ -1,0 +1,2 @@
+Case 1: odd
+Case 2: even
