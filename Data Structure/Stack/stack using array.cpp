@@ -7,7 +7,7 @@ struct Stack
     int *S;
 };
 
-void creat(struct Stack *st)
+void create(struct Stack *st)
 {
     cout<<"Input Stack size:";
     cin>>st->size;
@@ -87,7 +87,7 @@ int top(struct Stack *st)
 int main()
 {
     struct Stack st;
-    creat(&st);
+    create(&st);
     push(&st,5);
     push(&st,10);
     push(&st,15);
