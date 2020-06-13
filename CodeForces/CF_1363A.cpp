@@ -43,10 +43,44 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    cout<<"Hello World"<<endl;
-    
 
+    int tc;
+    cin>>tc;
+    int x,n,m;
+    while(tc--){
+    	cin>>n>>x;
+    	int odd = 0,s = 0;
+    	for(int i=0; i<n; i++){
+    		cin>>m;
+    		if(m%2==1)odd++;
+    		s+= m;
+    	}
+    	int even = n - odd;
 
+    	if(x==n){
+    		if(s%2==0){
+    			cout<<"No"<<endl;
+    		}else{
+    			cout<<"Yes"<<endl;
+    		}
+    	}else{
+    		if(x%2==1){
+    			if(odd){
+    				cout<<"Yes"<<endl;
+    			}else{
+    				cout<<"No"<<endl;
+    			}
+    		}else{
+    			if(even && odd){
+    				cout<<"Yes"<<endl;
+    			}else{
+    				cout<<"No"<<endl;
+    			}
+    		}
+    	}
+
+    	
+    }
 
 
 }

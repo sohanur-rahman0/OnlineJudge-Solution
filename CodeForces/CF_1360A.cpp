@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include<bits/stdc++.h>///did not solve yet
 using namespace std;
 
 #define ll long long
@@ -36,17 +36,34 @@ typedef priority_queue<int, vector<int>, greater<int>> pq;
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
 
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 #endif
-    cout<<"Hello World"<<endl;
-    
+	int tc, a, b;
+	cin >> tc;
+	while (tc--) {
+		cin >> a >> b;
+		int area = 2 * (a * b);
+		if (area <= 4) {
+			cout << "4" << endl;
+			continue;
+		}
+		int m = max(a,b);
+		int mi = min(a,b);
+		if(2*mi<=m){
+			cout<<m*m<<endl;
+		}else{
+			cout<<(2*mi)*(2*mi)<<endl;
+		}
+
+		} 
+
+	}
 
 
 
 
-}

@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include<bits/stdc++.h> 
 using namespace std;
 
 #define ll long long
@@ -36,17 +36,27 @@ typedef priority_queue<int, vector<int>, greater<int>> pq;
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
 
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 #endif
-    cout<<"Hello World"<<endl;
-    
+	ll tc, n, ans;
+	cin >> tc;
+	while (tc--) {
+		cin >> n;
+		ans = 0;
+		if (n == 1) {
+			cout << "0" << endl;
+			continue;
+		}
+		for (ll i = 0; i <= n / 2; i++) {
+			ans += i * i;
+		}
+		cout << ans * 8 << endl;
 
-
-
+	}
 
 }

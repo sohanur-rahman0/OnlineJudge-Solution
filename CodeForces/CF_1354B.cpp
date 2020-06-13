@@ -34,6 +34,56 @@ typedef pair<int, int> pii;
 typedef stringstream ss;
 typedef priority_queue<int, vector<int>, greater<int>> pq;
 
+
+const int MAX_CHARS = 200000; 
+
+
+string SubString(string str) 
+{ 
+	int n = str.length(); 
+
+	int dist_count = 0; 
+	bool visited[MAX_CHARS] = { false }; 
+	for (int i = 0; i < n; i++) { 
+		if (visited[str[i]] == false) { 
+			visited[str[i]] = true; 
+			dist_count++; 
+		} 
+	} 
+
+	 
+	int start = 0, start_index = -1, min_len = INT_MAX; 
+
+	int count = 0; 
+	int curr_count[MAX_CHARS] = { 0 }; 
+	for (int j = 0; j < n; j++) { 
+		
+		curr_count[str[j]]++; 
+ 
+		if (curr_count[str[j]] == 1) 
+			count++; 
+
+		if (count == dist_count) { 
+			
+			while (curr_count[str[start]] > 1) { 
+				if (curr_count[str[start]] > 1) 
+					curr_count[str[start]]--; 
+				start++; 
+			} 
+
+			
+			int len_window = j - start + 1; 
+			if (min_len > len_window) { 
+				min_len = len_window; 
+				start_index = start; 
+			} 
+		} 
+	} 
+
+	
+	return str.substr(start_index, min_len); 
+} 
+
 int main()
 {
     ios::sync_with_stdio(false);
@@ -43,10 +93,31 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    cout<<"Hello World"<<endl;
-    
+    ll tc;
+    cin>>tc;
+    while(tc--){
+    	string str;
+    	cin>>str;
+    	bool flag = false;
+    	int arr[4] = {0};
+    	for(int i = 0; str[i]; i++){
+    		arr[int(str[i]-'0')]++;
+    	}
+    	for(int i=1; i<=3; i++){
+    		if(arr[i]<=0)flag = true;
+    	}
+
+    	if(flag){
+    		cout<<"0"<<endl;
+    	}else{
+    	string ans = SubString(str);
+    	cout<<ans.length()<<endl;
+    }
+    }
 
 
 
 
 }
+
+

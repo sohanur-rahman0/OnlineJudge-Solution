@@ -43,10 +43,37 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    cout<<"Hello World"<<endl;
-    
+    int tc,t;
+    cin>>tc;
+    while(tc--){
+    	int n,k;
+    	cin>>n>>k;
+    	vi a;
+    	vi b;
+    	for(int i=0; i<n; i++){
+    		cin>>t;
+    		a.pb(t);
+    	}
+    	for(int i=0; i<n; i++){
+    		cin>>t;
+    		b.pb(t);
+    	}
 
+    	sort(all(a));
+    	sort(all(b),greater<int>());
+    	int i=0;
+    	while(k--){
+    		if(a[i]<b[i]){
+    			swap(a[i],b[i]);
+    			i++;
+    		}
 
-
+    	}
+    	int sum = 0;
+    	for(auto i:a){
+    		sum+=i;
+    	}
+    	cout<<sum<<endl;
+    }
 
 }

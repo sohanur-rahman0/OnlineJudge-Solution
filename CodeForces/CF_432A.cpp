@@ -43,10 +43,13 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    cout<<"Hello World"<<endl;
-    
-
-
-
+    int n,k;
+    cin>>n>>k;
+    int m,c=0;
+    for(int i=0; i<n; i++){
+    	cin>>m;
+    	if(5-m >=k)c++;
+    }
+    cout<<c/3<<endl;
 
 }

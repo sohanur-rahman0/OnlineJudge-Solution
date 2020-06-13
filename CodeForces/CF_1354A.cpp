@@ -43,10 +43,29 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    cout<<"Hello World"<<endl;
-    
 
+    ll tc;
+    cin>>tc;
+    while(tc--){
+    	ll a,b,c,d;
+    	
+    	cin>>a>>b>>c>>d;
+    	if(a>b && c<=d){
+    		cout<<"-1"<<endl;
+    	}else{
+    		ll time_left = a - b;
+    		if(time_left<=0){
+    			cout<<b<<endl;
+    			continue;
+    		}else{
+    			ll tpa = c - d;
+    			dd mul = ceil((dd)time_left/(dd)tpa);
 
+    			//cout<<mul<<endl;
+    			cout<<(ll)(b + (c*mul)) <<endl;
+    		}
+    	}
 
+    }
 
 }

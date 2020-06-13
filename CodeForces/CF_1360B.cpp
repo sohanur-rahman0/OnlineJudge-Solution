@@ -43,8 +43,38 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    cout<<"Hello World"<<endl;
-    
+    int tc;
+    cin>>tc;
+    int n;
+    while(tc--){
+    	cin>>n;
+    	vi v;
+    	int t;
+    	for(int i=0; i<n; i++){
+    		cin>>t;
+    		v.pb(t);
+    	}
+    	sort(all(v),greater<int>());
+    	// int m,mi;
+    	// if(n%2==0){
+    	// 	m = *min_element(v.begin(),v.begin()+n/2);
+  			//  mi = *max_element(v.begin()+n/2,v.end());
+    	// }else{
+    	// 	m = *min_element(v.begin(),v.begin()+(n/2)+1);
+    	// 	mi = *max_element(v.begin()+(n/2)+1,v.end());
+    	// }
+
+    	int min = INT_MAX,m;
+
+    	for(int i=0; i<n-1; i++){
+    		m = abs(v[i] - v[i+1]);
+    		if(m<min){
+    			min = m;
+    		}
+    	}
+
+    	cout<<min<<endl;
+    }
 
 
 

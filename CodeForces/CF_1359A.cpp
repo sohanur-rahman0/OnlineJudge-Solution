@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include<bits/stdc++.h> ///did not solve yet
 using namespace std;
 
 #define ll long long
@@ -43,9 +43,18 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    cout<<"Hello World"<<endl;
-    
-
+    int n,m,k,tc;
+    cin>>tc;
+    while(tc--){
+    	int limit,hjocker,jocker,mi;
+    	cin>>n>>m>>k;
+    	if(m==0){
+    		cout<<"0"<<endl;
+    		continue;
+    	}
+    	
+    	
+    }
 
 
 
