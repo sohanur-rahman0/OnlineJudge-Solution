@@ -40,7 +40,7 @@ int main()
     //  }cout<<endl;
     // }
 
-    cout<<table[row][col]<<endl;
+        cout<<table[row][col]<<endl;
 
     //string sub;
 

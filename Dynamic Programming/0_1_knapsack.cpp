@@ -38,5 +38,20 @@ int main()
 
     cout<<table[items][capasity]<<endl;
 
+    int i,j;
+
+    i = items;
+    j = capasity;
+
+    while(table[i][j]!=0) {
+        if(table[i][j]!=table[i-1][j]){
+            cout<<"Items "<<i<<": value: "<<value[i]<<" weight: "<<weight[i]<<endl;
+            j = j-weight[i];
+        }
+        i--;
+    }
+
+
+
 
 }
