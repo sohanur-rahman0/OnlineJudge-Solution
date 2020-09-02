@@ -2,27 +2,29 @@
 using namespace std;
 #define INF 320000
 vector<int>coins = {50,25,10,5,1};
-///recursive solution
-//int solve(int x)
-//{
-//	if(x<0)return INF;
-//	if(x==0)return 0;
-//	int best = INF;
-//	for(auto i:coins){
-//		best = min(best,solve(x-i)+1);
-//	}
-//	return best;
-//}
-///dynamic solution
+//recursive solution
+
+// int solve(int x)
+// {
+// 	if(x<0)return INF;
+// 	if(x==0){
+//         return 0;
+//     }
+// 	int best = INF;
+// 	for(auto i:coins){
+// 		best = min(best,solve(x-i)+1);
+// 	}
+// 	return best;
+// }
+//dynamic solution
 int value[INF]= {0};
 bool ready[INF] = {false};
-int c=0;
+
 int solve(int x)
 {
     if(x<0)
         return INF;
     if(x==0){
-            c++;
         return 0;
     }
     if(ready[x])
@@ -40,11 +42,11 @@ int solve(int x)
 int main()
 {
 
-    cout<<solve(23)<<endl;
-    cout<<c<<"Ways"<<endl;
+    cout<<solve(11)<<endl;
+    
     for(int i=0; i<100; i++)
         cout<<value[i]<<' ';
-    ///iterative solution
+    //iterative solution
     value[0] = 0;
     int n = 1050;
     for(int x=1; x<=n; x++)
