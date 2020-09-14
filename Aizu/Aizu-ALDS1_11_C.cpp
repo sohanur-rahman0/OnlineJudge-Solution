@@ -1,22 +1,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void bfs(vector<int>adj[], int start,bool visited[],int lavel[])
+void bfs(vector<int>adj[], int s,bool vis[],int lvl[])
 {
 	queue<int>q;
-	q.push(start);
-	lavel[start] = 0;
-	visited[start] = true;
+	q.push(s);
+	lvl[s] = 0;
+	vis[s] = true;
 
 	while(!q.empty()){
 		int x = q.front();
 		q.pop();
 
-		for (auto it:adj[x]){
-			if(!visited[it]){
-				lavel[it] = lavel[x] + 1;
-				q.push(it);
-				visited[it] = true;
+		for (auto i:adj[x]){
+			if(!vis[i]){
+				lvl[i] = lvl[x] + 1;
+				q.push(i);
+				vis[i] = true;
 			}
 		}
 
@@ -27,19 +27,17 @@ void bfs(vector<int>adj[], int start,bool visited[],int lavel[])
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    
+    int n;
+    cin>>n;
 
-    int node;
-    cin>>node;
-
-    vector<int>adj[node+1];
-    bool visited[node+1] = {false};
-    int lavel[node+1]= {0};
-    int t = node;
+    vector<int>adj[n+1];
+    bool vis[n+1] = {false};
+    int lvl[n+1]= {0};
+    int t = n;
     int u,k,v;
 
-    while(node--){
+    while(n--){
     	cin>>u>>k;
     	while(k--){
     		cin>>v;
@@ -47,25 +45,17 @@ int main()
     	}
     }
 
-    // for (int i = 0; i <5; ++i)
-    // {
-    // 	cout<< i <<" -->";
-    // 	for (int t:adj[i]){
-    // 		cout<<t<<" ";
-    // 	}
-    // 	cout<<endl;
-    // }
 
-    bfs(adj,1,visited,lavel);
+    bfs(adj,1,vis,lvl);
 
     for (int i = 1; i < t+1; ++i)
     {
     	if(i==1){
-    		cout<<i<<" "<<lavel[i]<<endl;
-    	}else if(lavel[i]==0){
+    		cout<<i<<" "<<lvl[i]<<endl;
+    	}else if(lvl[i]==0){
     		cout<<i<<" "<<"-1"<<endl;
     	}else {
-    		cout<<i<<" "<<lavel[i]<<endl;
+    		cout<<i<<" "<<lvl[i]<<endl;
     	}
     	
     }
