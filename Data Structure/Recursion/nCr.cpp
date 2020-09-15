@@ -12,5 +12,4 @@ ll nCr(ll n,ll r)
 int main()
 {
     cout<<nCr(1000,5)<<endl;
-
 }
