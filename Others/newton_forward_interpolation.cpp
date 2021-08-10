@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -9,7 +8,6 @@ float u_cal(float u, int n)
 		temp = temp * (u - i);
 	return temp;
 }
-
 int fact(int n)
 {
 	int f = 1;
@@ -56,8 +54,6 @@ int main()
 		sum = sum + (u_cal(u, i) * y[0][i]) /
 						fact(i);
 	}
-
-	cout << "\n Value at y(" << value << ") is "
-		 << sum << endl;
+	cout << "\n Value at y(" << value << ") is "<< sum << endl;
 	return 0;
 }
