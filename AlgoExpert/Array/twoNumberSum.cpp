@@ -19,7 +19,9 @@ T MAX(T a, T b)
     return (a > b ? a : b);
 }
 template <class T>
-T MIN(T a, T b) { return (a < b ? a : b); }
+T MIN(T a, T b) {
+    return (a < b ? a : b);
+}
 template <class T>
 T gcd(T a, T b)
 {
@@ -28,7 +30,9 @@ T gcd(T a, T b)
     return gcd(b, a % b);
 }
 template <class T>
-T lcm(T a, T b) { return (b / gcd(a, b)) * a; }
+T lcm(T a, T b) {
+    return (b / gcd(a, b)) * a;
+}
 template <class T>
 T toInt(T n)
 {
@@ -55,8 +59,7 @@ typedef map<string, string> dic;
 typedef pair<int, int> pii;
 typedef priority_queue<int, vector<int>, greater<int>> pq;
 
-int main()
-{
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 #ifndef ONLINE_JUDGE
@@ -70,30 +73,27 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> arr[i];
 
+    sort(arr, arr+ n);
+
     int start = 0, end = n - 1;
     bool flag = false;
-    while (start <= end)
-    {
-        if (arr[start] + arr[end] == targetSum)
-        {
+    while (start < end) {
+        if (arr[start] + arr[end] == targetSum) {
             cout << arr[start] << " " << arr[end] << endl;
             flag = true;
             break;
         }
 
-        if (arr[start] + arr[end] < targetSum)
-        {
+        if (arr[start] + arr[end] < targetSum) {
             start++;
         }
 
-        if (arr[start] + arr[end] > targetSum)
-        {
+        if (arr[start] + arr[end] > targetSum) {
             end--;
         }
     }
 
-    if (!flag)
-    {
+    if (!flag) {
         cout << "No Solution exist" << endl;
     }
 }
