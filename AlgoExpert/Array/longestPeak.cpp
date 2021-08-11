@@ -48,27 +48,33 @@ typedef map<string, string> dic;
 typedef pair<int, int> pii;
 typedef priority_queue<int, vector<int>, greater<int>> pq;
 
-bool isMonotonic(vi &arr) {
-    bool isUp = true, isDown = true;
-    for (int i = 0; i < arr.size() - 1; i++)
-    {
-        if(arr[i] > arr[i+1]) {
-            isDown = false;
+int longestPeak(vi &arr) {
+    int longestPeak = 0, i = 1;
+    while(i < (arr.size() - 1)) {
+        if(!((arr[i-1] < arr[i]) && (arr[i] > arr[i+1]))) {
+            i++;
+            continue;
         }
 
-        if(arr[i] < arr[i+1]) {
-            isUp = false;
+        int left = i-2, right = i + 2;
+
+        while(left >= 0 && arr[left] < arr[left + 1]) {
+            left--;
         }
+
+        while(right < arr.size() && arr[right] < arr[right - 1]) {
+            right++;
+        }
+
+        int currPeak = right - left - 1;
+
+        longestPeak = max(longestPeak, currPeak);
+
+        i = right;
     }
 
-    if (isUp || isDown) {
-        return true;
-    } else {
-        return false;
-    }
-
+    return longestPeak;
 }
-
 int main()
 {
     ios::sync_with_stdio(false);
@@ -77,16 +83,16 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    int n;
+    int n,t;
     cin>>n;
     vi arr;
-    int t;
-    for(int i=0; i<n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         cin>>t;
         arr.pb(t);
     }
 
 
+    cout<<longestPeak(arr)<<endl;
 
-    cout<<isMonotonic(arr)<<endl;
 }

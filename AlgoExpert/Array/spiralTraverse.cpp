@@ -47,28 +47,36 @@ typedef vector<char> vc;
 typedef map<string, string> dic;
 typedef pair<int, int> pii;
 typedef priority_queue<int, vector<int>, greater<int>> pq;
+vi spiralTraverse(vvi &arr) {
+    vi ans;
+    int sr = 0, er = arr.size() - 1;
+    int sc = 0, ec = arr[0].size() - 1;
 
-bool isMonotonic(vi &arr) {
-    bool isUp = true, isDown = true;
-    for (int i = 0; i < arr.size() - 1; i++)
-    {
-        if(arr[i] > arr[i+1]) {
-            isDown = false;
+    while(sr <= er && sc <= ec) {
+        for(int i=sc; i<=ec; i++) {
+            ans.pb(arr[sr][i]);
         }
 
-        if(arr[i] < arr[i+1]) {
-            isUp = false;
+        for(int i=sr+1; i<= er; i++) {
+            ans.pb(arr[i][ec]);
         }
+
+        for(int i=ec-1; i>= sc; i--) {
+            ans.pb(arr[er][i]);
+        }
+
+        for(int i=er-1; i>= sr + 1; i--) {
+            ans.pb(arr[i][sr]);
+        }
+
+        sr++;
+        er--;
+        sc++;
+        ec--;
     }
 
-    if (isUp || isDown) {
-        return true;
-    } else {
-        return false;
-    }
-
+    return ans;
 }
-
 int main()
 {
     ios::sync_with_stdio(false);
@@ -77,16 +85,18 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    int n;
-    cin>>n;
-    vi arr;
-    int t;
-    for(int i=0; i<n; i++) {
-        cin>>t;
-        arr.pb(t);
+    int n,m,t;
+    cin>>n>>m;
+    vvi arr(n, vi(m));
+    for (int i = 0; i < n; i++) {
+        for(int j=0; j<m; j++) {
+            cin>>t;
+            arr[i][j] = t;
+        }
     }
 
 
+    vi ans = spiralTraverse(arr);
 
-    cout<<isMonotonic(arr)<<endl;
+    for(int i=0; i<ans.size(); i++)cout<<ans[i]<<" ";
 }
