@@ -46,6 +46,11 @@ public:
         tail = t;
     }
 
+    void addBefore() {}
+    void addAfter() {}
+    void addAtPosition() {}
+    void remove() {}
+
     void forwardPrint() {
         Node *t = new Node();
         t = head;
