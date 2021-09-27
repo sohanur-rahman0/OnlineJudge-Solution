@@ -19,7 +19,7 @@ int search(int arr[],int end,int key)
 
             //return index;
     }
-    return -10;
+    return -1;
 }
 int main()
 {
