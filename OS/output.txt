@@ -1,0 +1,7 @@
+2 3 1
+1 21 2
+4 2 3
+3 6 4
+Waiting Time: 0 3 24 26 
+Avg waitng time: 13.25
+Gannt Chart: 0 P2 3 P1 24 P4 26 P3 32
